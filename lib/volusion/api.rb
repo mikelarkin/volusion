@@ -23,7 +23,9 @@ module Volusion
         :SELECT_Columns => '*'
       }
       where_query(where, query)
-      ordersHash = HTTParty.get(@base_uri+'/net/WebService.aspx', :query => query)['xmldata']['Orders']
+      ordersHash = HTTParty.get(@base_uri+'/net/WebService.aspx', :query => query)
+		return [] if ordersHash.nil? || ordersHash['xmldata'].nil?
+		ordersHash = ordersHash['xmldata']['Orders']
       orders = [];
       if ordersHash
         if ordersHash.is_a? Array
