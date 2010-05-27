@@ -9,12 +9,12 @@ orders.each do |order|
   order.line_items.each do |li|
     puts "\t LI ##{li.id}: #{li.title} (#{li.sku}) @ #{li.price}"
   end
-end
+end  
 
 puts "\n--------Order by ID (2)--------------------"
 orders = api.getOrders({:field => :orderId, :value => 2})
 orders.each do |order|
-  puts "Order ##{order.id}: #{order.first_name} #{order.last_name} (#{order.email})"
+  puts "Order ##{order.id}: #{order.first_name} #{order.last_name} (#{order.email}) | #{order.status}"
   order.line_items.each do |li|
     puts "\t LI ##{li.id}: #{li.title} (#{li.sku}) @ #{li.price}"
   end

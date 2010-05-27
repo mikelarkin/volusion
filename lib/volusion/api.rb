@@ -74,7 +74,7 @@ module Volusion
         line_items.push(hash_to_line_item(order_detail_hash))
       end
       customer = getCustomers({:field => :customerId, :value => order_hash['CustomerID']})[0]
-      return Volusion::Order.new(order_hash['OrderID'], order_hash['BillingFirstName'], order_hash['BillingLastName'], customer['EmailAddress'], line_items)
+      return Volusion::Order.new(order_hash['OrderID'], order_hash['BillingFirstName'], order_hash['BillingLastName'], customer['EmailAddress'], line_items, order_hash['OrderStatus'])
     end
 
     def hash_to_line_item (order_detail_hash)
